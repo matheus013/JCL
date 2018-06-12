@@ -1,0 +1,1 @@
+<html><head><h4>#2 lines 327 to 333 in JCL_handler (commom)</h4></head><body>			msgRe.flip();<br>			byte first = msgRe.get();<br>			byte start = (byte) ((first &gt;&gt; 6) &amp; (byte) 0x03);<br>			this.key = (byte) (first &amp; 0x3F);<br>			port = msgRe.getShort();<br>			this.mac = new byte[6];<br>			msgRe.get(this.mac);</body></html>

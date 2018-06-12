@@ -1,0 +1,1 @@
+<html><head><h4>#1 lines 351 to 361 in JCL_connector (commom)</h4></head><body>		output.put(key);<br>		<br>//		if(hash != null){output.putShort(hash);} 		<br>//		if(mac != null) {output.put(mac);}		<br><br>		output.put(obj);<br>		output.flip();<br>		<br>		while(output.hasRemaining()){<br>			Socket.write(output);<br>		}</body></html>

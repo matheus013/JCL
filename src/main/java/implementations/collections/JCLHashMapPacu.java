@@ -139,7 +139,7 @@ public class JCLHashMapPacu<K,V>
     public V get(Object key){
     	V oldValue = null;
         if (key != null){        	
-        		oldValue = (V) DEFAULT_JCL.getValue(key.toString()+"¬Map¬"+gvName).getCorrectResult();
+        		oldValue = (V) DEFAULT_JCL.getValue(key.toString()+"ï¿½Mapï¿½"+gvName).getCorrectResult();
         }else{
        	 System.out.println("Can't get<K,V> with null key!");
         }             
@@ -152,7 +152,7 @@ public class JCLHashMapPacu<K,V>
     public V getLock(Object key){
     	V oldValue = null;
         if (key != null){        	
-        		oldValue = (V) DEFAULT_JCL.getValueLocking(key.toString()+"¬Map¬"+gvName).getCorrectResult();
+        		oldValue = (V) DEFAULT_JCL.getValueLocking(key.toString()+"ï¿½Mapï¿½"+gvName).getCorrectResult();
         }else{
        	 System.out.println("Can't get<K,V> with null key!");
         }        
@@ -172,7 +172,7 @@ public class JCLHashMapPacu<K,V>
     }
     
     final Entry<K,V> getEntry(Object key) {
-    		V value = (V) DEFAULT_JCL.getValue(key.toString()+"¬Map¬"+gvName).getCorrectResult();
+    		V value = (V) DEFAULT_JCL.getValue(key.toString()+"ï¿½Mapï¿½"+gvName).getCorrectResult();
     		return new implementations.util.Entry(key,value);
     }
  
@@ -188,7 +188,7 @@ public class JCLHashMapPacu<K,V>
      */    
     public V put(K key, V value){
     	Object oldValue = null;
-        if ((key != null) && ((oldValue = super.hashPut((key.toString()+"¬Map¬"+gvName), value))!=null)){        	
+        if ((key != null) && ((oldValue = super.hashPut((key.toString()+"ï¿½Mapï¿½"+gvName), value))!=null)){        	
         		        	
 			// ################ Serialization key ########################
 			LinkedBuffer buffer = LinkedBuffer.allocate(1048576);
@@ -220,10 +220,10 @@ public class JCLHashMapPacu<K,V>
     public V putUnlock(K key, V value){
     	V oldValue = null;
         if (key != null){        	
-        	if(DEFAULT_JCL.containsGlobalVar(key.toString()+"¬Map¬"+gvName)){
-        		oldValue = (V) DEFAULT_JCL.getValue(key.toString()+"¬Map¬"+gvName).getCorrectResult();
-        		DEFAULT_JCL.setValueUnlocking((key.toString()+"¬Map¬"+gvName), value);
-        	}else if (DEFAULT_JCL.instantiateGlobalVar((key.toString()+"¬Map¬"+gvName), value)){
+        	if(DEFAULT_JCL.containsGlobalVar(key.toString()+"ï¿½Mapï¿½"+gvName)){
+        		oldValue = (V) DEFAULT_JCL.getValue(key.toString()+"ï¿½Mapï¿½"+gvName).getCorrectResult();
+        		DEFAULT_JCL.setValueUnlocking((key.toString()+"ï¿½Mapï¿½"+gvName), value);
+        	}else if (DEFAULT_JCL.instantiateGlobalVar((key.toString()+"ï¿½Mapï¿½"+gvName), value)){
     			
     			// ################ Serialization key ########################
     			LinkedBuffer buffer = LinkedBuffer.allocate(1048576);
@@ -286,10 +286,10 @@ public class JCLHashMapPacu<K,V>
     	V oldValue = null;
     	
     	 if (key != null){        	
-         	if(DEFAULT_JCL.containsGlobalVar(key.toString()+"¬Map¬"+gvName)){
-         		oldValue = (V) DEFAULT_JCL.getValue(key.toString()+"¬Map¬"+gvName).getCorrectResult();
+         	if(DEFAULT_JCL.containsGlobalVar(key.toString()+"ï¿½Mapï¿½"+gvName)){
+         		oldValue = (V) DEFAULT_JCL.getValue(key.toString()+"ï¿½Mapï¿½"+gvName).getCorrectResult();
          	}
-     		if (DEFAULT_JCL.deleteGlobalVar(key.toString()+"¬Map¬"+gvName)){
+     		if (DEFAULT_JCL.deleteGlobalVar(key.toString()+"ï¿½Mapï¿½"+gvName)){
      			super.hashRemove(gvName,key,idLocalize);
      		}
          }else{
@@ -299,19 +299,7 @@ public class JCLHashMapPacu<K,V>
     }
     
     protected V removeInt(Object key) {
-    	V oldValue = null;
-    	
-    	 if (key != null){        	
-         	if(DEFAULT_JCL.containsGlobalVar(key.toString()+"¬Map¬"+gvName)){
-         		oldValue = (V) DEFAULT_JCL.getValue(key.toString()+"¬Map¬"+gvName).getCorrectResult();
-         	}
-     		if (DEFAULT_JCL.deleteGlobalVar(key.toString()+"¬Map¬"+gvName)){
-     			super.hashRemove(gvName,key,idLocalize);
-     		}
-         }else{
-        	 System.out.println("Can't remove null key!");
-         }
-        return (oldValue == null ? null : oldValue);
+    	return remove(key);
     }
     
     /**
@@ -321,7 +309,7 @@ public class JCLHashMapPacu<K,V>
     public void clear() {
     	Set table = super.hashClean(gvName,idLocalize);
        for(Object key:table){    	   
-    	   if (DEFAULT_JCL.deleteGlobalVar(key.toString()+"¬Map¬"+gvName)){
+    	   if (DEFAULT_JCL.deleteGlobalVar(key.toString()+"ï¿½Mapï¿½"+gvName)){
     		   table.remove(key);
     	   }
        }
@@ -344,7 +332,7 @@ public class JCLHashMapPacu<K,V>
 			ProtobufIOUtil.mergeFrom(((ByteBuffer)k).getArray(), obj, scow);    		
     		K key = (K)obj.getobj();
     		
-    		Object valueGV = DEFAULT_JCL.getValue(key.toString()+"¬Map¬"+gvName).getCorrectResult();
+    		Object valueGV = DEFAULT_JCL.getValue(key.toString()+"ï¿½Mapï¿½"+gvName).getCorrectResult();
     		if(value.equals(valueGV)){
     			return true;
     		}

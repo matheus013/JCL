@@ -24,21 +24,7 @@ public class ServerDiscovery {
 
 			// Broadcast the message over all the network interfaces
 			Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
-			while (interfaces.hasMoreElements()) {
-				NetworkInterface networkInterface = (NetworkInterface) interfaces.nextElement();
-
-				if (networkInterface.isLoopback() || !networkInterface.isUp())
-					continue;
-
-				for (InterfaceAddress interfaceAddress : networkInterface.getInterfaceAddresses()) {
-					InetAddress broadcast = interfaceAddress.getBroadcast();
-					if (broadcast == null)
-						continue;
-
-					DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, broadcast, Constants.Environment.UDPPORT);
-					c.send(sendPacket);
-				}
-			}
+			discoverServerDuplicate(c, sendData, interfaces);
 
 			byte[] recvBuf = new byte[48];
 			DatagramPacket receivePacket = new DatagramPacket(recvBuf, recvBuf.length);
@@ -55,7 +41,25 @@ public class ServerDiscovery {
 		}
 		return serverData;
 	}
-	
+
+	private static void discoverServerDuplicate(DatagramSocket c, byte[] sendData, Enumeration<NetworkInterface> interfaces) throws IOException {
+		while (interfaces.hasMoreElements()) {
+			NetworkInterface networkInterface = (NetworkInterface) interfaces.nextElement();
+
+			if (networkInterface.isLoopback() || !networkInterface.isUp())
+				continue;
+
+			for (InterfaceAddress interfaceAddress : networkInterface.getInterfaceAddresses()) {
+				InetAddress broadcast = interfaceAddress.getBroadcast();
+				if (broadcast == null)
+					continue;
+
+				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, broadcast, Constants.Environment.UDPPORT);
+				c.send(sendPacket);
+			}
+		}
+	}
+
 	public static String[] discoverServerRouterPort() {
 		System.out.println("Starting Server Discovery");
 		String serverData[] = null;
@@ -68,21 +72,7 @@ public class ServerDiscovery {
 
 			// Broadcast the message over all the network interfaces
 			Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
-			while (interfaces.hasMoreElements()) {
-				NetworkInterface networkInterface = (NetworkInterface) interfaces.nextElement();
-
-				if (networkInterface.isLoopback() || !networkInterface.isUp())
-					continue;
-
-				for (InterfaceAddress interfaceAddress : networkInterface.getInterfaceAddresses()) {
-					InetAddress broadcast = interfaceAddress.getBroadcast();
-					if (broadcast == null)
-						continue;
-
-					DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, broadcast, Constants.Environment.UDPPORT);
-					c.send(sendPacket);
-				}
-			}
+			discoverServerDuplicate(c, sendData, interfaces);
 
 			byte[] recvBuf = new byte[48];
 			DatagramPacket receivePacket = new DatagramPacket(recvBuf, recvBuf.length);

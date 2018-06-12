@@ -1,0 +1,1 @@
+<html><head><h4>#2 lines 102 to 110 in IoTuniTests1 (junit.iot)</h4></head><body>testGetAllSensingData() {<br>		Object result = null;<br><br>		for(Entry&lt;Integer,JCL_Sensor&gt; sensing : jclIoT.getAllSensingData(device, sensor).entrySet()){<br>			result = sensing.getValue();<br>			break;<br>		}<br>		return true == (result != null);<br>	}</body></html>

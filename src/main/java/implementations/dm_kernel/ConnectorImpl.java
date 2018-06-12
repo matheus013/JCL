@@ -1,5 +1,6 @@
 package implementations.dm_kernel;
 
+import commom.JCL_handler;
 import interfaces.kernel.JCL_connector;
 import interfaces.kernel.JCL_message;
 import interfaces.kernel.JCL_message_control;
@@ -566,24 +567,8 @@ public class ConnectorImpl implements JCL_connector {
 		String[] macAddressParts = macAddress.split("-");
 		byte[] macAddressBytes = new byte[6];
 
-		if (macAddressParts.length == 6){
-		// convert hex string to byte values
-			for(int i=0; i<6; i++){
-				Integer hex = Integer.parseInt(macAddressParts[i], 16);
-				macAddressBytes[i] = hex.byteValue();
-			}
-		
-		}else{
-			String[] ipAddressParts = macAddress.split("\\.");
-			for(int i=0; i<4; i++){
-			    Integer integer = Integer.parseInt(ipAddressParts[i]);
-			    macAddressBytes[i] = integer.byteValue();
-			}
-			Integer integer = 0;
-			macAddressBytes[4] =  integer.byteValue();
-			macAddressBytes[5] =  integer.byteValue();
-		}		
-			return macAddressBytes;
+        JCL_handler.macConvertDuplicate(macAddress, macAddressParts, macAddressBytes);
+        return macAddressBytes;
 	}
 
 	public byte[] ipConvert(String ipAddress){

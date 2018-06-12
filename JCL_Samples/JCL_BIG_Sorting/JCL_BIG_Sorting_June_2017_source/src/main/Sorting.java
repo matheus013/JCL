@@ -2,6 +2,7 @@ package main;
 
 import implementations.collections.JCLHashMap;
 import implementations.dm_kernel.user.JCL_FacadeImpl;
+import implementations.util.DirCreation;
 import interfaces.kernel.JCL_map;
 import interfaces.kernel.JCL_facade;
 import it.unimi.dsi.fastutil.ints.Int2LongMap;
@@ -10,6 +11,7 @@ import it.unimi.dsi.fastutil.ints.IntAVLTreeSet;
 import it.unimi.dsi.fastutil.ints.IntOpenHashSet;
 import it.unimi.dsi.fastutil.ints.IntSet;
 import it.unimi.dsi.fastutil.io.FastBufferedInputStream;
+
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,8 +21,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Sorting {
-    public void bugFix() {}
-    
+    public void bugFix() {
+    }
+
     public Integer getCores() {
         return Runtime.getRuntime().availableProcessors();
     }
@@ -47,16 +50,16 @@ public class Sorting {
             }
             fb.close();
             in.close();
-            
+
             // primeira modificacao
             //for (long v : values.values())
             //    totalF += v;
-            
+
             IntSet sorted = new IntAVLTreeSet(values.keySet());
             long acumula = 0;
             int b = 0;
             List<String> result = new LinkedList<>();
-            long blinha = 0; 
+            long blinha = 0;
             int last = 0;
             for (int ac : sorted) {
                 blinha = values.get(ac);
@@ -68,10 +71,10 @@ public class Sorting {
                 }
                 last = ac;
             }
-            
+
             // segunda modificacao
-            if(acumula != 0) result.add(last + ":" + acumula);
-            
+            if (acumula != 0) result.add(last + ":" + acumula);
+
             JCL_facade jcl = JCL_FacadeImpl.getInstanceLambari();
             jcl.instantiateGlobalVar(id, values);
             sorted.clear();
@@ -101,7 +104,8 @@ public class Sorting {
                 if (ii < Integer.parseInt(chunks[0]))
                     finais[0].put(ii, sorted.get(ii));
                 else {
-                    tag: {
+                    tag:
+                    {
                         for (int k = 1; k < chunks.length; k++) {
                             if (Integer.parseInt(chunks[i]) <= ii && ii < Integer.parseInt(chunks[k])) {
                                 finais[i + 1].put(ii, sorted.get(ii));
@@ -115,7 +119,7 @@ public class Sorting {
         }
 
         for (int r = 0; r < numJCLThreads; r++) {
-            if(!finais[r].isEmpty()) {
+            if (!finais[r].isEmpty()) {
                 JCL_map<Integer, Int2LongMap> h = new JCLHashMap<>(String.valueOf(r));
                 h.put(id, finais[r]);
                 long fT = 0;
@@ -202,7 +206,7 @@ public class Sorting {
             }
         }
     }
-    
+
     public void clean(String name, Integer JCLNumThreads) {
         System.out.println("Cleaning data");
         for (int id = 0; id < JCLNumThreads; id++) {
@@ -212,33 +216,8 @@ public class Sorting {
     }
 
     private boolean removeDirs(File directory) {
-
-        if (directory == null)
-            return false;
-        if (!directory.exists())
-            return true;
-        if (!directory.isDirectory())
-            return false;
-
-        String[] list = directory.list();
-
-        // Some JVMs return null for File.list() when the
-        // directory is empty.
-        if (list != null) {
-            for (int i = 0; i < list.length; i++) {
-                File entry = new File(directory, list[i]);
-
-                if (entry.isDirectory()) {
-                    if (!removeDirs(entry))
-                        return false;
-                } else {
-                    if (!entry.delete())
-                        return false;
-                }
-            }
-        }
-
-        return directory.delete();
+        //precisa recompilar API
+        return DirCreation.removeDirs(directory);
     }
 
 }

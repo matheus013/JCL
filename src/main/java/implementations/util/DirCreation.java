@@ -14,7 +14,7 @@ public class DirCreation {
 		}
 	}
 	
-	private static boolean removeDirs(File directory) {
+	public static boolean removeDirs(File directory) {
 
 		  if (directory == null)
 		    return false;

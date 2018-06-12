@@ -1,0 +1,1 @@
+<html><head><h4>#1 lines 38 to 46 in Server (implementations.dm_kernel)</h4></head><body>Server(int port) throws IOException{<br>				<br>		this.serverSocket = ServerSocketChannel.open();<br>		this.initialTime = System.nanoTime();		<br>		this.port = port;<br>		this.selector = Selector.open();		<br>		this.serverR = new GenericResource&lt;JCL_handler&gt;(); <br><br>	}</body></html>

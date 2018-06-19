@@ -12,82 +12,75 @@ import commom.Constants;
 
 public class ServerDiscovery {
 
-	public static String[] discoverServer() {
-		System.out.println("Starting Server Discovery");
-		String serverData[] = null;
-		try {
-			DatagramSocket c;
-			c = new DatagramSocket();
-			c.setBroadcast(true);
+    private static String[] discoverDuplicate(DatagramSocket c, byte[] sendData) throws IOException {
+        String serverData[];
+        Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+        discoverServerDuplicate(c, sendData, interfaces);
 
-			byte[] sendData = "SERVERMAINPORT".getBytes();
+        byte[] recvBuf = new byte[48];
+        DatagramPacket receivePacket = new DatagramPacket(recvBuf, recvBuf.length);
+        c.setSoTimeout(8000);
+        c.receive(receivePacket);
 
-			// Broadcast the message over all the network interfaces
-			Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
-			discoverServerDuplicate(c, sendData, interfaces);
+        serverData = new String[2];
+        serverData[0] = receivePacket.getAddress().getHostAddress();
+        serverData[1] = new String(receivePacket.getData()).trim();
 
-			byte[] recvBuf = new byte[48];
-			DatagramPacket receivePacket = new DatagramPacket(recvBuf, recvBuf.length);
-			c.setSoTimeout(8000);
-			c.receive(receivePacket);
+        c.close();
+        return serverData;
+    }
 
-			serverData = new String[2];
-			serverData[0] = receivePacket.getAddress().getHostAddress();
-			serverData[1] = new String(receivePacket.getData()).trim();
+    public static String[] discoverServer() {
+        System.out.println("Starting Server Discovery");
+        String serverData[] = null;
+        try {
+            DatagramSocket c;
+            c = new DatagramSocket();
+            c.setBroadcast(true);
 
-			c.close();
-		} catch (IOException ex) {
-			System.out.println("Could not find JCL Server in the network");
-		}
-		return serverData;
-	}
+            byte[] sendData = "SERVERMAINPORT".getBytes();
 
-	private static void discoverServerDuplicate(DatagramSocket c, byte[] sendData, Enumeration<NetworkInterface> interfaces) throws IOException {
-		while (interfaces.hasMoreElements()) {
-			NetworkInterface networkInterface = (NetworkInterface) interfaces.nextElement();
+            // Broadcast the message over all the network interfaces
+            serverData = discoverDuplicate(c, sendData);
+        } catch (IOException ex) {
+            System.out.println("Could not find JCL Server in the network");
+        }
+        return serverData;
+    }
 
-			if (networkInterface.isLoopback() || !networkInterface.isUp())
-				continue;
+    private static void discoverServerDuplicate(DatagramSocket c, byte[] sendData, Enumeration<NetworkInterface> interfaces) throws IOException {
+        while (interfaces.hasMoreElements()) {
+            NetworkInterface networkInterface = (NetworkInterface) interfaces.nextElement();
 
-			for (InterfaceAddress interfaceAddress : networkInterface.getInterfaceAddresses()) {
-				InetAddress broadcast = interfaceAddress.getBroadcast();
-				if (broadcast == null)
-					continue;
+            if (networkInterface.isLoopback() || !networkInterface.isUp())
+                continue;
 
-				DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, broadcast, Constants.Environment.UDPPORT);
-				c.send(sendPacket);
-			}
-		}
-	}
+            for (InterfaceAddress interfaceAddress : networkInterface.getInterfaceAddresses()) {
+                InetAddress broadcast = interfaceAddress.getBroadcast();
+                if (broadcast == null)
+                    continue;
 
-	public static String[] discoverServerRouterPort() {
-		System.out.println("Starting Server Discovery");
-		String serverData[] = null;
-		try {
-			DatagramSocket c;
-			c = new DatagramSocket();
-			c.setBroadcast(true);
+                DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, broadcast, Constants.Environment.UDPPORT);
+                c.send(sendPacket);
+            }
+        }
+    }
 
-			byte[] sendData = "SERVERROUTERPORT".getBytes();
+    public static String[] discoverServerRouterPort() {
+        System.out.println("Starting Server Discovery");
+        String serverData[] = null;
+        try {
+            DatagramSocket c;
+            c = new DatagramSocket();
+            c.setBroadcast(true);
 
-			// Broadcast the message over all the network interfaces
-			Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
-			discoverServerDuplicate(c, sendData, interfaces);
+            byte[] sendData = "SERVERROUTERPORT".getBytes();
 
-			byte[] recvBuf = new byte[48];
-			DatagramPacket receivePacket = new DatagramPacket(recvBuf, recvBuf.length);
-			c.setSoTimeout(8000);
-			c.receive(receivePacket);
-
-			serverData = new String[2];
-			serverData[0] = receivePacket.getAddress().getHostAddress();
-			serverData[1] = new String(receivePacket.getData()).trim();
-
-			c.close();
-		} catch (IOException ex) {
-			System.out.println("Could not find JCL Server in the network");
-		}
-		return serverData;
-	}
+            serverData = discoverDuplicate(c, sendData);
+        } catch (IOException ex) {
+            System.out.println("Could not find JCL Server in the network");
+        }
+        return serverData;
+    }
 
 }

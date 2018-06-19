@@ -104,7 +104,7 @@ public abstract class ServerUDP {
 //	        		this.selectorLock.lock();
 //		        	this.selectorLock.unlock();
 //	        	}
-//	        	System.out.println("Nova conexão!");
+//	        	System.out.println("Nova conexï¿½o!");
 	        	Set<SelectionKey> selected = this.selector.selectedKeys();
             	Iterator<SelectionKey> it = selected.iterator();
             	while (it.hasNext()){           			
@@ -136,20 +136,7 @@ public abstract class ServerUDP {
 	
 	
     private void openServerSocket() {
-        try {
-        	this.serverSocket.configureBlocking(false);
-            //set some options
-            this.serverSocket.socket().setReuseAddress(true);
-            this.serverSocket.socket().bind(new InetSocketAddress(this.port));            
-                        
-            SelectionKey sk = this.serverSocket.register(this.selector,SelectionKey.OP_ACCEPT);
-//            sk.attach(new JCL_acceptor(this.serverSocket,this.selector));
-            sk.attach(new JCL_acceptor(this.serverSocket,this.selector,this.serverR));
-
-            
-        } catch (IOException e) {
-            throw new RuntimeException("Cannot open port " + this.port, e);
-        }
+        Server.openServerSocketDuplicate(this.serverSocket, this.port, this.selector, this.serverR);
     }
     
     protected GenericResource<JCL_handler> getServerR() {

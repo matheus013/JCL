@@ -171,46 +171,43 @@ public class JCL_FacadeImpl extends implementations.sm_kernel.JCL_FacadeImpl.Hol
             // scheduler flush in execute
             if (JPF) {
                 scheduler.scheduleAtFixedRate(
-                        new Runnable() {
-                            public void run() {
-                                try {
-                                    //watchdog end bin exec
-                                    if ((watchdog != 0) && (watchdog == msgTask.taskSize()) && (watchExecMeth)) {
-                                        //Get host
-                                        //Init RoundRobin
-                                        Map<String, String> hostPort = RoundRobin.getDevice();
-                                        String host = hostPort.get("IP");
-                                        String port = hostPort.get("PORT");
-                                        String mac = hostPort.get("MAC");
-                                        String portS = hostPort.get("PORT_SUPER_PEER");
+                        () -> {
+                            try {
+                                //watchdog end bin exec
+                                if ((watchdog != 0) && (watchdog == msgTask.taskSize()) && (watchExecMeth)) {
+                                    //Get host
+                                    //Init RoundRobin
+                                    Map<String, String> hostPort = RoundRobin.getDevice();
+                                    String host = hostPort.get("IP");
+                                    String port = hostPort.get("PORT");
+                                    String mac = hostPort.get("MAC");
+                                    String portS = hostPort.get("PORT_SUPER_PEER");
 
-                                        //Register missing class
-                                        for (String classReg : registerClass) {
-                                            if (!jarsSlaves.get(classReg).contains(host + port + mac + portS)) {
-                                                Object[] argsLam = {host, port, mac, portS, jars.get(classReg)};
-                                                Future<JCL_result> ti = jcl.execute("JCL_FacadeImplLamb", "register", argsLam);
-                                                ti.get();
-                                                //									jcl.getResultBlocking(ti);
-                                                jarsSlaves.get(classReg).add(host + port + mac + portS);
-                                            }
+                                    //Register missing class
+                                    for (String classReg : registerClass) {
+                                        if (!jarsSlaves.get(classReg).contains(host + port + mac + portS)) {
+                                            Object[] argsLam = {host, port, mac, portS, jars.get(classReg)};
+                                            Future<JCL_result> ti = jcl.execute("JCL_FacadeImplLamb", "register", argsLam);
+                                            ti.get();
+                                            //									jcl.getResultBlocking(ti);
+                                            jarsSlaves.get(classReg).add(host + port + mac + portS);
                                         }
-
-                                        //Send to host task bin
-                                        Object[] argsLam = {host, port, mac, portS, msgTask};
-                                        jcl.execute("JCL_FacadeImplLamb", "binexecutetask", argsLam);
-                                        msgTask = new MessageListTaskImpl();
-                                    } else {
-                                        //update watchdog
-                                        watchdog = msgTask.taskSize();
                                     }
 
-                                } catch (Exception e) {
-                                    // TODO Auto-generated catch block
-                                    System.err.println("JCL facade watchdog error");
-                                    e.printStackTrace();
+                                    //Send to host task bin
+                                    Object[] argsLam = {host, port, mac, portS, msgTask};
+                                    jcl.execute("JCL_FacadeImplLamb", "binexecutetask", argsLam);
+                                    msgTask = new MessageListTaskImpl();
+                                } else {
+                                    //update watchdog
+                                    watchdog = msgTask.taskSize();
                                 }
-                            }
 
+                            } catch (Exception e) {
+                                // TODO Auto-generated catch block
+                                System.err.println("JCL facade watchdog error");
+                                e.printStackTrace();
+                            }
                         }, 0, 5, TimeUnit.SECONDS);
             }
 
@@ -1501,14 +1498,18 @@ public class JCL_FacadeImpl extends implementations.sm_kernel.JCL_FacadeImpl.Hol
             return re;
 
         } catch (Exception e) {
-            System.err.println("problem in JCL facade getValue(Object key)");
-            JCL_result jclr = new JCL_resultImpl();
-            jclr.setErrorResult(e);
-            e.printStackTrace();
-            return jclr;
+            return getJcl_resultDuplicate(e);
         } finally {
             lock.readLock().unlock();
         }
+    }
+
+    public static JCL_result getJcl_resultDuplicate(Exception e) {
+        System.err.println("problem in JCL facade getValue(Object key)");
+        JCL_result jclr = new JCL_resultImpl();
+        jclr.setErrorResult(e);
+        e.printStackTrace();
+        return jclr;
     }
 
     @Override
@@ -1858,6 +1859,12 @@ public class JCL_FacadeImpl extends implementations.sm_kernel.JCL_FacadeImpl.Hol
 
     public static JCL_facade getInstancePacu() {
         Properties properties = new Properties();
+        getInstancePacuDuplicate(properties);
+
+        return Holder.getInstancePacu(properties);
+    }
+
+    public static void getInstancePacuDuplicate(Properties properties) {
         try {
             properties.load(new FileInputStream("../jcl_conf/config.properties"));
         } catch (FileNotFoundException e) {
@@ -1920,8 +1927,6 @@ public class JCL_FacadeImpl extends implementations.sm_kernel.JCL_FacadeImpl.Hol
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-
-        return Holder.getInstancePacu(properties);
     }
 
     public static JCL_facade getInstanceLambari() {
@@ -1941,68 +1946,7 @@ public class JCL_FacadeImpl extends implementations.sm_kernel.JCL_FacadeImpl.Hol
         protected synchronized static JCL_facade getInstance() {
 
             Properties properties = new Properties();
-            try {
-                properties.load(new FileInputStream("../jcl_conf/config.properties"));
-            } catch (FileNotFoundException e) {
-                System.err.println("File not found (../jcl_conf/config.properties) !!!!!");
-                System.out.println("Create properties file ../jcl_conf/config.properties.");
-                try {
-                    File file = new File("../jcl_conf/config.properties");
-                    file.getParentFile().mkdirs(); // Will create parent directories if not exists
-                    file.createNewFile();
-
-                    OutputStream output = new FileOutputStream(file, false);
-
-                    // set the properties value
-                    properties.setProperty("distOrParell", "true");
-                    properties.setProperty("serverMainPort", "6969");
-                    properties.setProperty("superPeerMainPort", "6868");
-
-
-                    properties.setProperty("routerMainPort", "7070");
-                    properties.setProperty("serverMainAdd", "127.0.0.1");
-                    properties.setProperty("hostPort", "5151");
-
-
-                    properties.setProperty("nic", "");
-                    properties.setProperty("simpleServerPort", "4949");
-                    properties.setProperty("timeOut", "5000");
-
-                    properties.setProperty("byteBuffer", "5242880");
-                    properties.setProperty("routerLink", "5");
-                    properties.setProperty("enablePBA", "false");
-
-                    properties.setProperty("PBAsize", "50");
-                    properties.setProperty("delta", "0");
-                    properties.setProperty("PGTerm", "10");
-
-                    properties.setProperty("twoStep", "false");
-                    properties.setProperty("useCore", "100");
-                    properties.setProperty("deviceID", "Host1");
-
-                    properties.setProperty("enableDinamicUp", "false");
-                    properties.setProperty("findServerTimeOut", "1000");
-                    properties.setProperty("findHostTimeOut", "1000");
-
-                    properties.setProperty("enableFaultTolerance", "false");
-                    properties.setProperty("verbose", "true");
-                    properties.setProperty("encryption", "false");
-
-                    properties.setProperty("deviceType", "3");
-                    properties.setProperty("mqttBrokerAdd", "127.0.0.1");
-                    properties.setProperty("mqttBrokerPort", "1883");
-
-                    //save properties to project root folder
-
-                    properties.store(output, null);
-                } catch (IOException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+            getInstancePacuDuplicate(properties);
 
             //get type of Instance
             if (Boolean.valueOf(properties.getProperty("distOrParell"))) {

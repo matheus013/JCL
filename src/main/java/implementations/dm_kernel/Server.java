@@ -99,23 +99,27 @@ public abstract class Server{
 	
 	
     private void openServerSocket() {
-        try {
-        	this.serverSocket.configureBlocking(false);
-            //set some options
-            this.serverSocket.socket().setReuseAddress(true);
-            this.serverSocket.socket().bind(new InetSocketAddress(this.port));            
-                        
-            SelectionKey sk = this.serverSocket.register(this.selector,SelectionKey.OP_ACCEPT);
-//            sk.attach(new JCL_acceptor(this.serverSocket,this.selector));
-            sk.attach(new JCL_acceptor(this.serverSocket,this.selector,this.serverR));
+		openServerSocketDuplicate(this.serverSocket, this.port, this.selector, this.serverR);
+	}
 
-            
-        } catch (IOException e) {
-            throw new RuntimeException("Cannot open port " + this.port, e);
-        }
-    }
-    
-    protected GenericResource<JCL_handler> getServerR() {
+	static void openServerSocketDuplicate(ServerSocketChannel serverSocket, int port, Selector selector, GenericResource<JCL_handler> serverR) {
+		try {
+			serverSocket.configureBlocking(false);
+			//set some options
+			serverSocket.socket().setReuseAddress(true);
+			serverSocket.socket().bind(new InetSocketAddress(port));
+
+			SelectionKey sk = serverSocket.register(selector,SelectionKey.OP_ACCEPT);
+//            sk.attach(new JCL_acceptor(this.serverSocket,this.selector));
+			sk.attach(new JCL_acceptor(serverSocket, selector, serverR));
+
+
+		} catch (IOException e) {
+			throw new RuntimeException("Cannot open port " + port, e);
+		}
+	}
+
+	protected GenericResource<JCL_handler> getServerR() {
 		return serverR;
 	}
     

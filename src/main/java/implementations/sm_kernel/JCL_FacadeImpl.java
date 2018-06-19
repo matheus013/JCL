@@ -32,6 +32,8 @@ import commom.GenericResource;
 import commom.JCL_resultImpl;
 import commom.JCL_taskImpl;
 
+import static implementations.dm_kernel.user.JCL_FacadeImpl.getJcl_resultDuplicate;
+
 public class JCL_FacadeImpl implements JCL_facade {
 	
 	//Global variables
@@ -111,21 +113,7 @@ public class JCL_FacadeImpl implements JCL_facade {
 	}
 	
 	public Future<JCL_result> execute(Long ticket, String className, String methodName, Object... args) {
-		try{
-			//create task			
-			JCL_task t = new JCL_taskImpl(ticket, className, methodName, args);
-			JCL_result jclr = new JCL_resultImpl();	
-			jclr.setTime(t.getTaskTime());
-			results.put(ticket, jclr);			
-			r.putRegister(t);
-		
-			return new JCLFuture<JCL_result>(ticket);
-			
-		}catch (Exception e){
-			System.err.println("JCL facade problem in execute(String className, String methodName, Object... args)");			
-			e.printStackTrace();
-			return new JCLSFuture<JCL_result>(null);
-		}	
+		return getJcl_resultFuture(className, methodName, ticket, args);
 	}
 	
 	//execute with Method name as arg
@@ -133,25 +121,29 @@ public class JCL_FacadeImpl implements JCL_facade {
 	public Future<JCL_result> execute(String className, String methodName, Object... args) {
 		
 		//create ticket
-		Long ticket = numOfTasks.getAndIncrement();	
-		
+		Long ticket = numOfTasks.getAndIncrement();
+
+		return getJcl_resultFuture(className, methodName, ticket, args);
+	}
+
+	private Future<JCL_result> getJcl_resultFuture(String className, String methodName, Long ticket, Object[] args) {
 		try{
-			//create task			
+			//create task
 			JCL_task t = new JCL_taskImpl(ticket, className, methodName, args);
-			JCL_result jclr = new JCL_resultImpl();	
+			JCL_result jclr = new JCL_resultImpl();
 			jclr.setTime(t.getTaskTime());
-			results.put(ticket, jclr);			
+			results.put(ticket, jclr);
 			r.putRegister(t);
-			
+
 			return new JCLFuture<JCL_result>(ticket);
-			
+
 		}catch (Exception e){
-			System.err.println("JCL facade problem in execute(String className, String methodName, Object... args)");			
+			System.err.println("JCL facade problem in execute(String className, String methodName, Object... args)");
 			e.printStackTrace();
 			return new JCLSFuture<JCL_result>(null);
-		}	
+		}
 	}
-	
+
 	//execute with JCL_taskImpl as arg
 	public Future<JCL_result> execute(JCL_task task) {
 		
@@ -222,12 +214,7 @@ public class JCL_FacadeImpl implements JCL_facade {
 			jclr.setCorrectResult(orb.getValue(key));
 			return jclr;
 		}catch(Exception e){
-			System.err.println("problem in JCL facade getValue(Object key)");
-			
-			JCL_result jclr = new JCL_resultImpl();
-			jclr.setErrorResult(e);
-			e.printStackTrace();
-			return jclr;
+            return getJcl_resultDuplicate(e);
 		}		
 	}
 	

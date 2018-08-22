@@ -32,7 +32,7 @@ public class testeIoT {
 		t.testeClean();
 		
 //		iot.PacuHPC.execute("myClass", new Object[]{4});
-//		System.out.println(iot.PacuHPC.getValue("var").getCorrectResult());
+//		System.out.println(iot.PacuHPC.value("var").getCorrectResult());
 		
 //		t.mqtt();
 		

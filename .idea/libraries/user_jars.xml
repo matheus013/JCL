@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="user_jars">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JCL_Samples/API_Samples/user_jars/myChartAppl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Samples/API_Samples/user_jars/book.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Samples/API_Samples/user_jars/jfreechart-1.0.14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Samples/API_Samples/user_jars/jcommon-1.0.17.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

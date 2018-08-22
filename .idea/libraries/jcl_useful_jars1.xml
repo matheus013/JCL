@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jcl_useful_jars1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JCL_Android/jcl_useful_jars/UserServices.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Android/jcl_useful_jars/UserType.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

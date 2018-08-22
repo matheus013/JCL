@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="DexTranslator">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JCL_MQTT/lib/DexTranslator.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

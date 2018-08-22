@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JCL_Samples/JCL_Knapsack/Knapsack_June_2017_source/lib/jclUser.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Samples/JCL_Knapsack/Knapsack_June_2017_source/lib/Knapsack.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

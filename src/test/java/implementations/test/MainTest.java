@@ -100,7 +100,7 @@ public class MainTest {
 		
 //		System.out.println("Interator:");
 //		for(java.util.Map.Entry<pacuSend, pacuSend> v:teste0.entrySet()){
-//			System.out.println("key:"+v.getKey()+" value:"+v.getValue());
+//			System.out.println("key:"+v.key()+" value:"+v.value());
 //		}
 		
 	}
@@ -364,8 +364,8 @@ public class MainTest {
 		JCLHashMap<Integer, MessageSensorImpl> values = new JCLHashMap<Integer, MessageSensorImpl>("E4:90:7E:3F:61:B2515112_value");
 		
 		for (int i = 1;i<values.size();i++){
-		//	System.out.println(Arrays.toString((float[])values.get(i).getValue()));
-//			AudioData audiodata = new AudioData((byte[])values.get(i).getValue());
+		//	System.out.println(Arrays.toString((float[])values.get(i).value()));
+//			AudioData audiodata = new AudioData((byte[])values.get(i).value());
 //			AudioDataStream audioStream = new AudioDataStream(audiodata);
 //			// Play the sound
 //			AudioPlayer.player.start(audioStream);
@@ -477,7 +477,7 @@ public class MainTest {
 //
 //		
 //		for(Entry<String, String> d:devidesL){
-//			System.out.println("Key: "+d.getKey()+"  Valor: "+d.getValue());
+//			System.out.println("Key: "+d.key()+"  Valor: "+d.value());
 //		}
 //		
 //		//Lista todos os sensing Devices
@@ -485,7 +485,7 @@ public class MainTest {
 //		
 //		
 //		for (Entry<String, String> d:devides){
-//			System.out.println("Key: "+d.getKey()+"  Valor: "+d.getValue());
+//			System.out.println("Key: "+d.key()+"  Valor: "+d.value());
 //			
 //			
 ////			System.out.println("restart:"+jclIoT.restart(d));
@@ -508,10 +508,10 @@ public class MainTest {
 //			for (Entry<String, String> s:se){
 //				
 //				//Mostra o ultimo dado do divice d do sensor s 
-//			//	if (!d.getValue().equals("SONY D5106")){
-//				jclIoT.getlastsensingdata(d, s).getValue().showData();
+//			//	if (!d.value().equals("SONY D5106")){
+//				jclIoT.getlastsensingdata(d, s).value().showData();
 //			//	}
-//				//		System.out.println("Last"+jclIoT.getlastsensingdata(d, s).getValue());
+//				//		System.out.println("Last"+jclIoT.getlastsensingdata(d, s).value());
 //
 //				//Mostra os 10 ultimo dado do divice d do sensor s 
 //				Map<Integer,JCL_Sensor> valores = jclIoT.getsensingdata(d,s);
@@ -663,8 +663,8 @@ void teste13(){
 //    jcl.instantiateGlobalVar("Teste11",var);
 //    jcl.instantiateGlobalVar("Teste22",var2);
 //
-//    System.out.println(jcl.getValue("Teste11").getCorrectResult());
-//    System.out.println(jcl.getValue("Teste22").getCorrectResult());
+//    System.out.println(jcl.value("Teste11").getCorrectResult());
+//    System.out.println(jcl.value("Teste22").getCorrectResult());
 
     List<Entry<String, String>> h = jcl.getDevices();
     System.out.println(h);
@@ -674,8 +674,8 @@ void teste13(){
     System.out.println(jcl.getValue("Teste1").getCorrectResult());
     System.out.println(jcl.getValue("Teste2").getCorrectResult());
 
-//    jcl.setValueUnlocking("Teste1",(((int)jcl.getValue("Teste1").getCorrectResult())+1));
-//    System.out.println(jcl.getValue("Teste1").getCorrectResult());
+//    jcl.setValueUnlocking("Teste1",(((int)jcl.value("Teste1").getCorrectResult())+1));
+//    System.out.println(jcl.value("Teste1").getCorrectResult());
    jcl.destroy();
  }
 }

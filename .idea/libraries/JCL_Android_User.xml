@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="JCL_Android_User">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JCL_Android/JCL_RELEASE/JCL_Android_User.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

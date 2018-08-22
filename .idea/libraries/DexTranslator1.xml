@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="DexTranslator1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JCL_Boarding/lib/DexTranslator.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

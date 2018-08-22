@@ -376,30 +376,10 @@ public strictfp class MersenneTwisterFast implements Serializable, Cloneable
     public int nextInt()
         {
         int y;
-        
-        if (mti >= N)   // generate N words at one time
-            {
-            int kk;
-            final int[] mt = this.mt; // locals are slightly faster 
-            final int[] mag01 = this.mag01; // locals are slightly faster 
-            
-            for (kk = 0; kk < N - M; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+M] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            for (; kk < N-1; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+(M-N)] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-            mt[N-1] = mt[M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
 
-            mti = 0;
-            }
-  
-        y = mt[mti++];
+            nextLongDuplicate();
+
+            y = mt[mti++];
         y ^= y >>> 11;                          // TEMPERING_SHIFT_U(y)
         y ^= (y << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(y)
         y ^= (y << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(y)
@@ -413,30 +393,10 @@ public strictfp class MersenneTwisterFast implements Serializable, Cloneable
     public short nextShort()
         {
         int y;
-        
-        if (mti >= N)   // generate N words at one time
-            {
-            int kk;
-            final int[] mt = this.mt; // locals are slightly faster 
-            final int[] mag01 = this.mag01; // locals are slightly faster 
-            
-            for (kk = 0; kk < N - M; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+M] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            for (; kk < N-1; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+(M-N)] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-            mt[N-1] = mt[M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
 
-            mti = 0;
-            }
-  
-        y = mt[mti++];
+            nextLongDuplicate();
+
+            y = mt[mti++];
         y ^= y >>> 11;                          // TEMPERING_SHIFT_U(y)
         y ^= (y << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(y)
         y ^= (y << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(y)
@@ -450,30 +410,10 @@ public strictfp class MersenneTwisterFast implements Serializable, Cloneable
     public char nextChar()
         {
         int y;
-        
-        if (mti >= N)   // generate N words at one time
-            {
-            int kk;
-            final int[] mt = this.mt; // locals are slightly faster 
-            final int[] mag01 = this.mag01; // locals are slightly faster 
-            
-            for (kk = 0; kk < N - M; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+M] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            for (; kk < N-1; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+(M-N)] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-            mt[N-1] = mt[M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
 
-            mti = 0;
-            }
-  
-        y = mt[mti++];
+            nextLongDuplicate();
+
+            y = mt[mti++];
         y ^= y >>> 11;                          // TEMPERING_SHIFT_U(y)
         y ^= (y << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(y)
         y ^= (y << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(y)
@@ -486,30 +426,10 @@ public strictfp class MersenneTwisterFast implements Serializable, Cloneable
     public boolean nextBoolean()
         {
         int y;
-        
-        if (mti >= N)   // generate N words at one time
-            {
-            int kk;
-            final int[] mt = this.mt; // locals are slightly faster 
-            final int[] mag01 = this.mag01; // locals are slightly faster 
-            
-            for (kk = 0; kk < N - M; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+M] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            for (; kk < N-1; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+(M-N)] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-            mt[N-1] = mt[M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
 
-            mti = 0;
-            }
-  
-        y = mt[mti++];
+            nextLongDuplicate();
+
+            y = mt[mti++];
         y ^= y >>> 11;                          // TEMPERING_SHIFT_U(y)
         y ^= (y << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(y)
         y ^= (y << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(y)
@@ -534,29 +454,9 @@ public strictfp class MersenneTwisterFast implements Serializable, Cloneable
             throw new IllegalArgumentException ("probability must be between 0.0 and 1.0 inclusive.");
         if (probability==0.0f) return false;            // fix half-open issues
         else if (probability==1.0f) return true;        // fix half-open issues
-        if (mti >= N)   // generate N words at one time
-            {
-            int kk;
-            final int[] mt = this.mt; // locals are slightly faster 
-            final int[] mag01 = this.mag01; // locals are slightly faster 
-            
-            for (kk = 0; kk < N - M; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+M] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            for (; kk < N-1; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+(M-N)] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-            mt[N-1] = mt[M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
+            nextLongDuplicate();
 
-            mti = 0;
-            }
-  
-        y = mt[mti++];
+            y = mt[mti++];
         y ^= y >>> 11;                          // TEMPERING_SHIFT_U(y)
         y ^= (y << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(y)
         y ^= (y << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(y)
@@ -579,57 +479,17 @@ public strictfp class MersenneTwisterFast implements Serializable, Cloneable
             throw new IllegalArgumentException ("probability must be between 0.0 and 1.0 inclusive.");
         if (probability==0.0) return false;             // fix half-open issues
         else if (probability==1.0) return true; // fix half-open issues
-        if (mti >= N)   // generate N words at one time
-            {
-            int kk;
-            final int[] mt = this.mt; // locals are slightly faster 
-            final int[] mag01 = this.mag01; // locals are slightly faster 
-            
-            for (kk = 0; kk < N - M; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+M] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            for (; kk < N-1; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+(M-N)] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-            mt[N-1] = mt[M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
+            nextLongDuplicate();
 
-            mti = 0;
-            }
-  
-        y = mt[mti++];
+            y = mt[mti++];
         y ^= y >>> 11;                          // TEMPERING_SHIFT_U(y)
         y ^= (y << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(y)
         y ^= (y << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(y)
         y ^= (y >>> 18);                        // TEMPERING_SHIFT_L(y)
 
-        if (mti >= N)   // generate N words at one time
-            {
-            int kk;
-            final int[] mt = this.mt; // locals are slightly faster 
-            final int[] mag01 = this.mag01; // locals are slightly faster 
-            
-            for (kk = 0; kk < N - M; kk++)
-                {
-                z = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+M] ^ (z >>> 1) ^ mag01[z & 0x1];
-                }
-            for (; kk < N-1; kk++)
-                {
-                z = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+(M-N)] ^ (z >>> 1) ^ mag01[z & 0x1];
-                }
-            z = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-            mt[N-1] = mt[M-1] ^ (z >>> 1) ^ mag01[z & 0x1];
-            
-            mti = 0;
-            }
-        
-        z = mt[mti++];
+            nextLongDuplicate();
+
+            z = mt[mti++];
         z ^= z >>> 11;                          // TEMPERING_SHIFT_U(z)
         z ^= (z << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(z)
         z ^= (z << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(z)
@@ -643,30 +503,10 @@ public strictfp class MersenneTwisterFast implements Serializable, Cloneable
     public byte nextByte()
         {
         int y;
-        
-        if (mti >= N)   // generate N words at one time
-            {
-            int kk;
-            final int[] mt = this.mt; // locals are slightly faster 
-            final int[] mag01 = this.mag01; // locals are slightly faster 
-            
-            for (kk = 0; kk < N - M; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+M] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            for (; kk < N-1; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+(M-N)] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-            mt[N-1] = mt[M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
 
-            mti = 0;
-            }
-  
-        y = mt[mti++];
+            nextLongDuplicate();
+
+            y = mt[mti++];
         y ^= y >>> 11;                          // TEMPERING_SHIFT_U(y)
         y ^= (y << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(y)
         y ^= (y << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(y)
@@ -682,29 +522,9 @@ public strictfp class MersenneTwisterFast implements Serializable, Cloneable
         
         for (int x=0;x<bytes.length;x++)
             {
-            if (mti >= N)   // generate N words at one time
-                {
-                int kk;
-                final int[] mt = this.mt; // locals are slightly faster 
-                final int[] mag01 = this.mag01; // locals are slightly faster 
-                
-                for (kk = 0; kk < N - M; kk++)
-                    {
-                    y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                    mt[kk] = mt[kk+M] ^ (y >>> 1) ^ mag01[y & 0x1];
-                    }
-                for (; kk < N-1; kk++)
-                    {
-                    y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                    mt[kk] = mt[kk+(M-N)] ^ (y >>> 1) ^ mag01[y & 0x1];
-                    }
-                y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-                mt[N-1] = mt[M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
-                
-                mti = 0;
-                }
-            
-            y = mt[mti++];
+                nextLongDuplicate();
+
+                y = mt[mti++];
             y ^= y >>> 11;                          // TEMPERING_SHIFT_U(y)
             y ^= (y << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(y)
             y ^= (y << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(y)
@@ -723,57 +543,17 @@ public strictfp class MersenneTwisterFast implements Serializable, Cloneable
         int y;
         int z;
 
-        if (mti >= N)   // generate N words at one time
-            {
-            int kk;
-            final int[] mt = this.mt; // locals are slightly faster 
-            final int[] mag01 = this.mag01; // locals are slightly faster 
-            
-            for (kk = 0; kk < N - M; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+M] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            for (; kk < N-1; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+(M-N)] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-            mt[N-1] = mt[M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
+            nextLongDuplicate();
 
-            mti = 0;
-            }
-  
-        y = mt[mti++];
+            y = mt[mti++];
         y ^= y >>> 11;                          // TEMPERING_SHIFT_U(y)
         y ^= (y << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(y)
         y ^= (y << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(y)
         y ^= (y >>> 18);                        // TEMPERING_SHIFT_L(y)
 
-        if (mti >= N)   // generate N words at one time
-            {
-            int kk;
-            final int[] mt = this.mt; // locals are slightly faster 
-            final int[] mag01 = this.mag01; // locals are slightly faster 
-            
-            for (kk = 0; kk < N - M; kk++)
-                {
-                z = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+M] ^ (z >>> 1) ^ mag01[z & 0x1];
-                }
-            for (; kk < N-1; kk++)
-                {
-                z = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+(M-N)] ^ (z >>> 1) ^ mag01[z & 0x1];
-                }
-            z = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-            mt[N-1] = mt[M-1] ^ (z >>> 1) ^ mag01[z & 0x1];
-            
-            mti = 0;
-            }
-        
-        z = mt[mti++];
+            nextLongDuplicate();
+
+            z = mt[mti++];
         z ^= z >>> 11;                          // TEMPERING_SHIFT_U(z)
         z ^= (z << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(z)
         z ^= (z << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(z)
@@ -782,27 +562,14 @@ public strictfp class MersenneTwisterFast implements Serializable, Cloneable
         return (((long)y) << 32) + (long)z;
         }
 
-
-
-    /** Returns a long drawn uniformly from 0 to n-1.  Suffice it to say,
-        n must be &gt; 0, or an IllegalArgumentException is raised. */
-    public long nextLong(long n)
-        {
-        if (n<=0)
-            throw new IllegalArgumentException("n must be positive, got: " + n);
-        
-        long bits, val;
-        do 
-            {
+        private void nextLongDuplicate() {
             int y;
-            int z;
-    
             if (mti >= N)   // generate N words at one time
                 {
                 int kk;
-                final int[] mt = this.mt; // locals are slightly faster 
-                final int[] mag01 = this.mag01; // locals are slightly faster 
-            
+                final int[] mt = this.mt; // locals are slightly faster
+                final int[] mag01 = this.mag01; // locals are slightly faster
+
                 for (kk = 0; kk < N - M; kk++)
                     {
                     y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
@@ -815,39 +582,36 @@ public strictfp class MersenneTwisterFast implements Serializable, Cloneable
                     }
                 y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
                 mt[N-1] = mt[M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
-    
+
                 mti = 0;
                 }
-    
-            y = mt[mti++];
+        }
+
+
+        /** Returns a long drawn uniformly from 0 to n-1.  Suffice it to say,
+        n must be &gt; 0, or an IllegalArgumentException is raised. */
+    public long nextLong(long n)
+        {
+        if (n<=0)
+            throw new IllegalArgumentException("n must be positive, got: " + n);
+        
+        long bits, val;
+        do 
+            {
+            int y;
+            int z;
+
+                nextLongDuplicate();
+
+                y = mt[mti++];
             y ^= y >>> 11;                          // TEMPERING_SHIFT_U(y)
             y ^= (y << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(y)
             y ^= (y << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(y)
             y ^= (y >>> 18);                        // TEMPERING_SHIFT_L(y)
-    
-            if (mti >= N)   // generate N words at one time
-                {
-                int kk;
-                final int[] mt = this.mt; // locals are slightly faster 
-                final int[] mag01 = this.mag01; // locals are slightly faster 
-                
-                for (kk = 0; kk < N - M; kk++)
-                    {
-                    z = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                    mt[kk] = mt[kk+M] ^ (z >>> 1) ^ mag01[z & 0x1];
-                    }
-                for (; kk < N-1; kk++)
-                    {
-                    z = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                    mt[kk] = mt[kk+(M-N)] ^ (z >>> 1) ^ mag01[z & 0x1];
-                    }
-                z = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-                mt[N-1] = mt[M-1] ^ (z >>> 1) ^ mag01[z & 0x1];
-                
-                mti = 0;
-                }
-            
-            z = mt[mti++];
+
+                nextLongDuplicate();
+
+                z = mt[mti++];
             z ^= z >>> 11;                          // TEMPERING_SHIFT_U(z)
             z ^= (z << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(z)
             z ^= (z << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(z)
@@ -866,57 +630,17 @@ public strictfp class MersenneTwisterFast implements Serializable, Cloneable
         int y;
         int z;
 
-        if (mti >= N)   // generate N words at one time
-            {
-            int kk;
-            final int[] mt = this.mt; // locals are slightly faster 
-            final int[] mag01 = this.mag01; // locals are slightly faster 
-            
-            for (kk = 0; kk < N - M; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+M] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            for (; kk < N-1; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+(M-N)] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-            mt[N-1] = mt[M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
+            nextLongDuplicate();
 
-            mti = 0;
-            }
-  
-        y = mt[mti++];
+            y = mt[mti++];
         y ^= y >>> 11;                          // TEMPERING_SHIFT_U(y)
         y ^= (y << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(y)
         y ^= (y << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(y)
         y ^= (y >>> 18);                        // TEMPERING_SHIFT_L(y)
 
-        if (mti >= N)   // generate N words at one time
-            {
-            int kk;
-            final int[] mt = this.mt; // locals are slightly faster 
-            final int[] mag01 = this.mag01; // locals are slightly faster 
-            
-            for (kk = 0; kk < N - M; kk++)
-                {
-                z = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+M] ^ (z >>> 1) ^ mag01[z & 0x1];
-                }
-            for (; kk < N-1; kk++)
-                {
-                z = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+(M-N)] ^ (z >>> 1) ^ mag01[z & 0x1];
-                }
-            z = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-            mt[N-1] = mt[M-1] ^ (z >>> 1) ^ mag01[z & 0x1];
-            
-            mti = 0;
-            }
-        
-        z = mt[mti++];
+            nextLongDuplicate();
+
+            z = mt[mti++];
         z ^= z >>> 11;                          // TEMPERING_SHIFT_U(z)
         z ^= (z << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(z)
         z ^= (z << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(z)
@@ -979,114 +703,34 @@ public strictfp class MersenneTwisterFast implements Serializable, Cloneable
                 int z;
                 int a;
                 int b;
-                    
-                if (mti >= N)   // generate N words at one time
-                    {
-                    int kk;
-                    final int[] mt = this.mt; // locals are slightly faster 
-                    final int[] mag01 = this.mag01; // locals are slightly faster 
-                    
-                    for (kk = 0; kk < N - M; kk++)
-                        {
-                        y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                        mt[kk] = mt[kk+M] ^ (y >>> 1) ^ mag01[y & 0x1];
-                        }
-                    for (; kk < N-1; kk++)
-                        {
-                        y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                        mt[kk] = mt[kk+(M-N)] ^ (y >>> 1) ^ mag01[y & 0x1];
-                        }
-                    y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-                    mt[N-1] = mt[M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
-                    
-                    mti = 0;
-                    }
-                
-                y = mt[mti++];
+
+                    nextLongDuplicate();
+
+                    y = mt[mti++];
                 y ^= y >>> 11;                          // TEMPERING_SHIFT_U(y)
                 y ^= (y << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(y)
                 y ^= (y << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(y)
                 y ^= (y >>> 18);                        // TEMPERING_SHIFT_L(y)
-                
-                if (mti >= N)   // generate N words at one time
-                    {
-                    int kk;
-                    final int[] mt = this.mt; // locals are slightly faster 
-                    final int[] mag01 = this.mag01; // locals are slightly faster 
-                    
-                    for (kk = 0; kk < N - M; kk++)
-                        {
-                        z = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                        mt[kk] = mt[kk+M] ^ (z >>> 1) ^ mag01[z & 0x1];
-                        }
-                    for (; kk < N-1; kk++)
-                        {
-                        z = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                        mt[kk] = mt[kk+(M-N)] ^ (z >>> 1) ^ mag01[z & 0x1];
-                        }
-                    z = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-                    mt[N-1] = mt[M-1] ^ (z >>> 1) ^ mag01[z & 0x1];
-                    
-                    mti = 0;
-                    }
-                
-                z = mt[mti++];
+
+                    nextLongDuplicate();
+
+                    z = mt[mti++];
                 z ^= z >>> 11;                          // TEMPERING_SHIFT_U(z)
                 z ^= (z << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(z)
                 z ^= (z << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(z)
                 z ^= (z >>> 18);                        // TEMPERING_SHIFT_L(z)
-                
-                if (mti >= N)   // generate N words at one time
-                    {
-                    int kk;
-                    final int[] mt = this.mt; // locals are slightly faster 
-                    final int[] mag01 = this.mag01; // locals are slightly faster 
-                    
-                    for (kk = 0; kk < N - M; kk++)
-                        {
-                        a = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                        mt[kk] = mt[kk+M] ^ (a >>> 1) ^ mag01[a & 0x1];
-                        }
-                    for (; kk < N-1; kk++)
-                        {
-                        a = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                        mt[kk] = mt[kk+(M-N)] ^ (a >>> 1) ^ mag01[a & 0x1];
-                        }
-                    a = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-                    mt[N-1] = mt[M-1] ^ (a >>> 1) ^ mag01[a & 0x1];
-                    
-                    mti = 0;
-                    }
-                
-                a = mt[mti++];
+
+                    nextLongDuplicate();
+
+                    a = mt[mti++];
                 a ^= a >>> 11;                          // TEMPERING_SHIFT_U(a)
                 a ^= (a << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(a)
                 a ^= (a << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(a)
                 a ^= (a >>> 18);                        // TEMPERING_SHIFT_L(a)
-                
-                if (mti >= N)   // generate N words at one time
-                    {
-                    int kk;
-                    final int[] mt = this.mt; // locals are slightly faster 
-                    final int[] mag01 = this.mag01; // locals are slightly faster 
-                    
-                    for (kk = 0; kk < N - M; kk++)
-                        {
-                        b = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                        mt[kk] = mt[kk+M] ^ (b >>> 1) ^ mag01[b & 0x1];
-                        }
-                    for (; kk < N-1; kk++)
-                        {
-                        b = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                        mt[kk] = mt[kk+(M-N)] ^ (b >>> 1) ^ mag01[b & 0x1];
-                        }
-                    b = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-                    mt[N-1] = mt[M-1] ^ (b >>> 1) ^ mag01[b & 0x1];
-                    
-                    mti = 0;
-                    }
-                
-                b = mt[mti++];
+
+                    nextLongDuplicate();
+
+                    b = mt[mti++];
                 b ^= b >>> 11;                          // TEMPERING_SHIFT_U(b)
                 b ^= (b << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(b)
                 b ^= (b << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(b)
@@ -1116,30 +760,10 @@ public strictfp class MersenneTwisterFast implements Serializable, Cloneable
     public float nextFloat()
         {
         int y;
-        
-        if (mti >= N)   // generate N words at one time
-            {
-            int kk;
-            final int[] mt = this.mt; // locals are slightly faster 
-            final int[] mag01 = this.mag01; // locals are slightly faster 
-            
-            for (kk = 0; kk < N - M; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+M] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            for (; kk < N-1; kk++)
-                {
-                y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                mt[kk] = mt[kk+(M-N)] ^ (y >>> 1) ^ mag01[y & 0x1];
-                }
-            y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-            mt[N-1] = mt[M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
 
-            mti = 0;
-            }
-  
-        y = mt[mti++];
+            nextLongDuplicate();
+
+            y = mt[mti++];
         y ^= y >>> 11;                          // TEMPERING_SHIFT_U(y)
         y ^= (y << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(y)
         y ^= (y << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(y)
@@ -1187,30 +811,10 @@ public strictfp class MersenneTwisterFast implements Serializable, Cloneable
         if ((n & -n) == n)  // i.e., n is a power of 2
             {
             int y;
-        
-            if (mti >= N)   // generate N words at one time
-                {
-                int kk;
-                final int[] mt = this.mt; // locals are slightly faster 
-                final int[] mag01 = this.mag01; // locals are slightly faster 
-                
-                for (kk = 0; kk < N - M; kk++)
-                    {
-                    y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                    mt[kk] = mt[kk+M] ^ (y >>> 1) ^ mag01[y & 0x1];
-                    }
-                for (; kk < N-1; kk++)
-                    {
-                    y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                    mt[kk] = mt[kk+(M-N)] ^ (y >>> 1) ^ mag01[y & 0x1];
-                    }
-                y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-                mt[N-1] = mt[M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
-                
-                mti = 0;
-                }
-            
-            y = mt[mti++];
+
+                nextLongDuplicate();
+
+                y = mt[mti++];
             y ^= y >>> 11;                          // TEMPERING_SHIFT_U(y)
             y ^= (y << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(y)
             y ^= (y << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(y)
@@ -1223,30 +827,10 @@ public strictfp class MersenneTwisterFast implements Serializable, Cloneable
         do 
             {
             int y;
-            
-            if (mti >= N)   // generate N words at one time
-                {
-                int kk;
-                final int[] mt = this.mt; // locals are slightly faster 
-                final int[] mag01 = this.mag01; // locals are slightly faster 
-                
-                for (kk = 0; kk < N - M; kk++)
-                    {
-                    y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                    mt[kk] = mt[kk+M] ^ (y >>> 1) ^ mag01[y & 0x1];
-                    }
-                for (; kk < N-1; kk++)
-                    {
-                    y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-                    mt[kk] = mt[kk+(M-N)] ^ (y >>> 1) ^ mag01[y & 0x1];
-                    }
-                y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-                mt[N-1] = mt[M-1] ^ (y >>> 1) ^ mag01[y & 0x1];
-                
-                mti = 0;
-                }
-            
-            y = mt[mti++];
+
+                nextLongDuplicate();
+
+                y = mt[mti++];
             y ^= y >>> 11;                          // TEMPERING_SHIFT_U(y)
             y ^= (y << 7) & TEMPERING_MASK_B;       // TEMPERING_SHIFT_S(y)
             y ^= (y << 15) & TEMPERING_MASK_C;      // TEMPERING_SHIFT_T(y)

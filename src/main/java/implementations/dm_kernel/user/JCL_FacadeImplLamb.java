@@ -502,7 +502,7 @@ public class JCL_FacadeImplLamb extends implementations.sm_kernel.JCL_FacadeImpl
 				} else{	
 					
 					//Get new Host
-					String[] hostPortID = ((JCL_message_control)msgResult).getRegisterData()[0].split("¬");
+					String[] hostPortID = ((JCL_message_control)msgResult).getRegisterData()[0].split("ï¿½");
 		  		  	Host = hostPortID[0];
 		  		  	Port = hostPortID[1];
 		  		  	String newID = hostPortID[2];
@@ -559,7 +559,7 @@ public class JCL_FacadeImplLamb extends implementations.sm_kernel.JCL_FacadeImpl
 					result = resultI.getCorrectResult();
 				
 				} else{					
-					String[] hostPortID = ((JCL_message_control)msgResult).getRegisterData()[0].split("¬");
+					String[] hostPortID = ((JCL_message_control)msgResult).getRegisterData()[0].split("ï¿½");
 		  		  	Host = hostPortID[0];
 		  		  	Port = hostPortID[1];
 		  		  	String newID = hostPortID[2];
@@ -617,7 +617,7 @@ public class JCL_FacadeImplLamb extends implementations.sm_kernel.JCL_FacadeImpl
 
 				}else{
 					
-					String[] hostPortID = ((JCL_message_control)msgResult).getRegisterData()[0].split("¬");
+					String[] hostPortID = ((JCL_message_control)msgResult).getRegisterData()[0].split("ï¿½");
 		  		  	Host = hostPortID[0];
 		  		  	Port = hostPortID[1];
 		  		  	String newID = hostPortID[2];
@@ -1159,7 +1159,7 @@ public class JCL_FacadeImplLamb extends implementations.sm_kernel.JCL_FacadeImpl
 				
 
 		} catch (Exception e) {
-			System.err.println("problem in JCL facade getValue");
+			System.err.println("problem in JCL facade value");
 			e.printStackTrace();
 			return null;
 		}
@@ -1243,7 +1243,7 @@ public class JCL_FacadeImplLamb extends implementations.sm_kernel.JCL_FacadeImpl
 				}
 
 			} catch (Exception e) {
-				System.err.println("problem in JCL facade getValue");
+				System.err.println("problem in JCL facade value");
 				e.printStackTrace();
 				return null;
 			}

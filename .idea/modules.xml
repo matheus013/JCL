@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/JCL_Samples/API_Samples/API_Samples.iml" filepath="$PROJECT_DIR$/JCL_Samples/API_Samples/API_Samples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCL_Samples/JCL_Dijkstra/Dijkstra__June_2017_source/Dijkstra__June_2017_source.iml" filepath="$PROJECT_DIR$/JCL_Samples/JCL_Dijkstra/Dijkstra__June_2017_source/Dijkstra__June_2017_source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCL_Samples/JCL_BIG_Sorting/JCL_BIG_Sorting_June_2017_source/JCL_BIG_Sorting_June_2017_source.iml" filepath="$PROJECT_DIR$/JCL_Samples/JCL_BIG_Sorting/JCL_BIG_Sorting_June_2017_source/JCL_BIG_Sorting_June_2017_source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCL_Samples/JCL_GPU_Matrix/JCL_GPU_Matrix.iml" filepath="$PROJECT_DIR$/JCL_Samples/JCL_GPU_Matrix/JCL_GPU_Matrix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCL_Samples/JCL_SimpleIoTapplication/JCLsimpleIoTapplication_source/JCLsimpleIoTapplication_source.iml" filepath="$PROJECT_DIR$/JCL_Samples/JCL_SimpleIoTapplication/JCLsimpleIoTapplication_source/JCLsimpleIoTapplication_source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCL_Samples/JCL_Knapsack/Knapsack_June_2017_source/Knapsack_June_2017_source.iml" filepath="$PROJECT_DIR$/JCL_Samples/JCL_Knapsack/Knapsack_June_2017_source/Knapsack_June_2017_source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCL_Samples/JCL_MovingObjectObserver/MovingObjectObserver_source/MovingObjectObserver_source.iml" filepath="$PROJECT_DIR$/JCL_Samples/JCL_MovingObjectObserver/MovingObjectObserver_source/MovingObjectObserver_source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCL_Android/app/src/androidTest/androidTest.iml" filepath="$PROJECT_DIR$/JCL_Android/app/src/androidTest/androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCL_Samples/JCL_simpleIoTapplicationAndroid/JCLsimpleIoTapplicationAndroid_source/app/src/androidTest/androidTest1.iml" filepath="$PROJECT_DIR$/JCL_Samples/JCL_simpleIoTapplicationAndroid/JCLsimpleIoTapplicationAndroid_source/app/src/androidTest/androidTest1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCL_Samples/Jcl_Android_examples/app/src/androidTest/androidTest2.iml" filepath="$PROJECT_DIR$/JCL_Samples/Jcl_Android_examples/app/src/androidTest/androidTest2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCL_Samples/API_Samples/jcl_examples/jcl_examples.iml" filepath="$PROJECT_DIR$/JCL_Samples/API_Samples/jcl_examples/jcl_examples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCL_Android/app/src/main/main.iml" filepath="$PROJECT_DIR$/JCL_Android/app/src/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCL_Samples/Jcl_Android_examples/app/src/main/main1.iml" filepath="$PROJECT_DIR$/JCL_Samples/Jcl_Android_examples/app/src/main/main1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/main/main2.iml" filepath="$PROJECT_DIR$/src/main/main2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCL_Samples/JCL_simpleIoTapplicationAndroid/JCLsimpleIoTapplicationAndroid_source/app/src/main/main3.iml" filepath="$PROJECT_DIR$/JCL_Samples/JCL_simpleIoTapplicationAndroid/JCLsimpleIoTapplicationAndroid_source/app/src/main/main3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCL_Samples/JCL_simpleIoTapplicationAndroid/JCLsimpleIoTapplicationAndroid_source/app/src/test/test.iml" filepath="$PROJECT_DIR$/JCL_Samples/JCL_simpleIoTapplicationAndroid/JCLsimpleIoTapplicationAndroid_source/app/src/test/test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/test/test1.iml" filepath="$PROJECT_DIR$/src/test/test1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCL_Samples/Jcl_Android_examples/app/src/test/test2.iml" filepath="$PROJECT_DIR$/JCL_Samples/Jcl_Android_examples/app/src/test/test2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JCL_Android/app/src/test/test3.iml" filepath="$PROJECT_DIR$/JCL_Android/app/src/test/test3.iml" />
+    </modules>
+  </component>
+</project>

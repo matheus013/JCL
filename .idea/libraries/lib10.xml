@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="lib10">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JCL_Samples/JCL_GPU_Matrix/lib/aparapi.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Samples/JCL_GPU_Matrix/lib/jclUser.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -200,11 +200,11 @@ public class Board implements Runnable{
 			Iterator<Entry<Integer, Map<String, JCL_Context>>> it = mapContext.entrySet().iterator();
 			while (it.hasNext()) {
 				Entry<Integer, Map<String, JCL_Context>> contextIt = it.next();
-				for (Entry<String, JCL_Context> ent:contextIt.getValue().entrySet()){
-					JCL_Context ctx = ent.getValue();
+				for (Entry<String, JCL_Context> ent:contextIt.value().entrySet()){
+					JCL_Context ctx = ent.value();
 					writer.write("=");
 					writer.write(separator);
-					writer.write(""+contextIt.getKey());
+					writer.write(""+contextIt.key());
 					writer.write(separator);
 					writer.write(ctx.getContextNickname());
 					writer.write(separator);
@@ -214,13 +214,13 @@ public class Board implements Runnable{
 						if (act.isActing()){
 							writer.write("^");
 							writer.write(separator);
-							writer.write(act.getDeviceNickname().getKey());
+							writer.write(act.getDeviceNickname().key());
 							writer.write(separator);
-							writer.write(act.getDeviceNickname().getValue());
+							writer.write(act.getDeviceNickname().value());
 							writer.write(separator);
-							writer.write(act.getActuatorNickname().getKey());
+							writer.write(act.getActuatorNickname().key());
 							writer.write(separator);
-							writer.write(act.getActuatorNickname().getValue());
+							writer.write(act.getActuatorNickname().value());
 							writer.write(separator);
 						}else{
 							writer.write(">");

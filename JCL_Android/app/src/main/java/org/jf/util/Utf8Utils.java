@@ -40,6 +40,10 @@ public final class Utf8Utils {
      * @return non-null; the UTF-8 bytes for it
      */
     public static byte[] stringToUtf8Bytes(String string) {
+        return getBytesDuplicate(string);
+    }
+
+    public static byte[] getBytesDuplicate(String string) {
         int len = string.length();
         byte[] bytes = new byte[len * 3]; // Avoid having to reallocate.
         int outAt = 0;

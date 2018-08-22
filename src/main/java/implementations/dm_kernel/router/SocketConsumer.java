@@ -51,7 +51,7 @@ public class SocketConsumer<S extends JCL_handler> extends GenericConsumer<S> {
 	protected void doSomething(S str) {
 		try {
 			// TODO Auto-generated method stub
-			// System.out.println("Tipo da msg:"+str.getKey());
+			// System.out.println("Tipo da msg:"+str.key());
 			
 			switch (str.getInput()[1]) {
 
@@ -166,7 +166,7 @@ public class SocketConsumer<S extends JCL_handler> extends GenericConsumer<S> {
 //						synchronized (peer) {
 //							if (peer.getFrom() == null) {
 //								// OLHAR PROBLEMA RETIREI ATENCAO
-//					//			peer.send(str.getInput(), str.getKey(), (short)rand.nextInt(3000,1,1), str.getMac());
+//					//			peer.send(str.getInput(), str.key(), (short)rand.nextInt(3000,1,1), str.getMac());
 //								peer.setFrom(str);
 //							} else {
 //								str.putOnQueue();

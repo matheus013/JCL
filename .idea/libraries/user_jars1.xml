@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="user_jars1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/user_jars/book.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/user_jars/jcommon-1.0.17.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/user_jars/Vertice.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/user_jars/UserType.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/user_jars/myChartAppl.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/user_jars/JCL_Graph_Load.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/user_jars/jfreechart-1.0.14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/user_jars/UserServices.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/user_jars/Edge.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/user_jars/userServices.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

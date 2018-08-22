@@ -107,7 +107,7 @@ import commom.JCL_taskImpl;
 	11 public boolean destroyGlobalVar(String varName) {
 	12 public boolean setValue(String varName, Object value) {
 	13 public boolean setValueUnlocking(String varName, Object value) {
-	14 public JCL_result getValue(String varName) {
+	14 public JCL_result value(String varName) {
 	15 public JCL_result getValueLocking(String varName) {
 	16 public void destroy() {
 	18 public boolean containsTask(String nickName){
@@ -572,10 +572,10 @@ public class SocketConsumer<S extends JCL_handler> extends GenericConsumer<S> {
 				break;
 			}
 
-				// getValue(id) type:14
+				// value(id) type:14
 			case 14: {
 
-				// getValue(id) type:14
+				// value(id) type:14
 				JCL_message_generic jclC = (JCL_message_generic)msg;
 								
 				Object jclR = orb.getValue(ByteBuffer.wrap((byte[])jclC.getRegisterData()));
@@ -1481,8 +1481,8 @@ public class SocketConsumer<S extends JCL_handler> extends GenericConsumer<S> {
 //				int x = 0;
 //				boolean status = true;
 //				for (Entry<Object, Object> gv : gvSet) {
-//					Object key = gv.getKey();
-//					Object value = gv.getValue();
+//					Object key = gv.key();
+//					Object value = gv.value();
 //					int sizeClus = slaves.size();
 //					int index = (slavesIDs.indexOf(hostId));
 //					int hashId = key.hashCode() / (sizeClus - 1);
@@ -1540,8 +1540,8 @@ public class SocketConsumer<S extends JCL_handler> extends GenericConsumer<S> {
 							
 							msgTask.setTask(t);
 							orb.getResults().remove(t.getTaskID());
-							JCLTaskMap.put(t.getTaskID(), str.getSocketAddress() + "¬" + jclmg.getRegisterData()[0]
-									+ "¬" + jclmg.getRegisterData()[1] + "¬" + jclmg.getRegisterData()[2]+ "¬" + jclmg.getRegisterData()[3]);							
+							JCLTaskMap.put(t.getTaskID(), str.getSocketAddress() + "ï¿½" + jclmg.getRegisterData()[0]
+									+ "ï¿½" + jclmg.getRegisterData()[1] + "ï¿½" + jclmg.getRegisterData()[2]+ "ï¿½" + jclmg.getRegisterData()[3]);							
 							t.setTaskTime(System.nanoTime());
 						
 						}

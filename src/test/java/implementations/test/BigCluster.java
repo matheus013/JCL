@@ -23,7 +23,7 @@ public class BigCluster {
 		System.out.println("saiu");
 		for (int i=0; i< 100; i++){
 			for (Device d:iot.<Device>getIoTDevices()){
-//				if (!d.getKey().equals(arduino.getKey()))
+//				if (!d.key().equals(arduino.key()))
 					for (Sensor s: iot.<Sensor>getSensors(d)){
 						System.out.println(d + "  " + s);
 						try{

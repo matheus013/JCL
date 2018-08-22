@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="lib7">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JCL_Samples/JCL_Dijkstra/Dijkstra__June_2017_source/lib/Vertex.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Samples/JCL_Dijkstra/Dijkstra__June_2017_source/lib/jclUser.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Samples/JCL_Dijkstra/Dijkstra__June_2017_source/lib/Dijkstra.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jclUser">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JCL_Samples/JCL_SimpleIoTapplication/JCLsimpleIoTapplication_source/lib/jclUser.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -222,7 +222,7 @@ public class JCL_FacadeImpl implements JCL_facade {
 			jclr.setCorrectResult(orb.getValue(key));
 			return jclr;
 		}catch(Exception e){
-			System.err.println("problem in JCL facade getValue(Object key)");
+			System.err.println("problem in JCL facade value(Object key)");
 			
 			JCL_result jclr = new JCL_resultImpl();
 			jclr.setErrorResult(e);

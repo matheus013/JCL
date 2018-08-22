@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="jcl_JARS_pacu">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/jcl_JARS_pacu/jclUser.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/jcl_JARS_pacu/JCL_MQTT-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/jcl_JARS_pacu/MQTT-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/jcl_JARS_pacu/JCL_Server-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/jcl_JARS_pacu/JCL_SuperPeer-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/jcl_JARS_pacu/JCL_Boarding-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/jcl_JARS_pacu/JCL_Host.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/jcl_JARS_pacu/JCL_Server.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/jcl_JARS_pacu/JCL_Host-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_RELEASE/jcl_JARS_pacu/JCL_User-1.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

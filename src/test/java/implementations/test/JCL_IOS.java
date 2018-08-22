@@ -37,10 +37,10 @@ public class JCL_IOS {
 				//iot.getSensingData(device,sensor);
 				
 				for (Entry<Integer,JCL_Sensor> s:iot.getSensingData(device,sensor).entrySet()){
-		//			s.getValue().showData();
+		//			s.value().showData();
 				}
 				
-		//		iot.getLastSensingData(device,sensor).getValue().showData();
+		//		iot.getLastSensingData(device,sensor).value().showData();
 				
 				System.out.println("Sensor now!!!");
 				iot.getSensingDataNow(device, sensor).showData();

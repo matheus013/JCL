@@ -49,7 +49,7 @@ import interfaces.kernel.datatype.Device;
  11 public boolean destroyGlobalVar(String varName) {
  12 public boolean setValue(String varName, Object value) {
  13 public boolean setValueUnlocking(String varName, Object value) {
- 14 public JCL_result getValue(String varName) {
+ 14 public JCL_result value(String varName) {
  15 public JCL_result getValueLocking(String varName) {
  16 public void destroy() {
  17 public boolean containsGlobalVar(String ninckName){
@@ -301,7 +301,7 @@ public class JCL_IoTFacadeImpl implements JCL_IoTfacade{
 //			JCL_message_control msg = new MessageControlImpl();
 //			msg.setType(41);
 			return devices.get(deviceNickname.getKey());
-//			msg.setRegisterData(type,device.getKey());
+//			msg.setRegisterData(type,device.key());
 //				
 //			JCL_connector controlConnector = new ConnectorImpl(false);
 //			controlConnector.connect(Holder.serverIP(), Holder.serverPort(),null);		

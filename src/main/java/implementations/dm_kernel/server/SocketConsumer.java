@@ -79,7 +79,7 @@ import commom.JCL_handler;
 	11 public boolean destroyGlobalVar(String varName) {
 	12 public boolean setValue(String varName, Object value) {
 	13 public boolean setValueUnlocking(String varName, Object value) {
-	14 public JCL_result getValue(String varName) {
+	14 public JCL_result value(String varName) {
 	15 public JCL_result getValueLocking(String varName) {
 	16 public void destroy() {
 	17 public boolean containsGlobalVar(String ninckName){
@@ -173,7 +173,7 @@ public class SocketConsumer<S extends JCL_handler> extends GenericConsumer<S>{
 	protected void doSomething(S str) {
 		try{				 
 			
-			// JCL_message msg = (JCL_message)super.ReadObjectFromSock(str.getKey(), str.getInput());
+			// JCL_message msg = (JCL_message)super.ReadObjectFromSock(str.key(), str.getInput());
 			 JCL_message msg = str.getMsg();
 			 
 			//Get local time
@@ -532,7 +532,7 @@ public class SocketConsumer<S extends JCL_handler> extends GenericConsumer<S>{
 				break;
 			}
 			case 14:{	
-				if (verbose) System.err.println(msg.getType()+" - "+"getValue() - "+formatador.format(calendar.getTime()));				
+				if (verbose) System.err.println(msg.getType()+" - "+"value() - "+formatador.format(calendar.getTime()));
 				JCL_message_generic aux = (JCL_message_generic) msg;
 				Object key = ByteBuffer.wrap((byte[])aux.getRegisterData());
 

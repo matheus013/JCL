@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="book">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JCL_Samples/API_Samples/jcl_examples/bookJAR/book.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

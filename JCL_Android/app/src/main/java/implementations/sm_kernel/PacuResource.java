@@ -20,7 +20,6 @@ import commom.GenericResource;
 import commom.JCL_resultImpl;
 
 public class PacuResource<S> extends GenericResource<S> {
-
 	private ConcurrentMap<String,String[]> slaves;
 	private Map<Long, JCL_result> results;
 	private List<String> slavesIDs;

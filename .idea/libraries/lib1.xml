@@ -1,0 +1,25 @@
+<component name="libraryTable">
+  <library name="lib1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/cling-support-2.0.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/protostuff-collectionschema-1.4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/slf4j-api-1.7.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/fastutil-7.0.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/DexTranslator.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/junit-4.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/javassist-3.20.0-GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/hamcrest-core-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/seamless-xml-1.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/seamless-swing-1.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/seamless-util-1.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/protostuff-core-1.4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/protostuff-runtime-1.4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/protostuff-api-1.4.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/seamless-http-1.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/mraa-1.3.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/JCL_Host/lib/cling-core-2.0.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
